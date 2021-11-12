@@ -4,18 +4,15 @@ class TictactoeGameEngine:
         self.board = list('.' * self.SIZE * self.SIZE)  # ['.', '.', '.', '.', '.', '.', '.', '.', '.']
         self.turn = 'X'
 
-    def show_board(self):       #FPI 조나현
-        print(self.board)
-        while True:
-            row = int(input("행:"))
-            col = int(input("열:"))
-
-            self.game_engine.set(row,col)
-
-            break
+    def show_board(self):  # FPI 조나현
+        for a in range(len(self.board)):
+            print(self.board[a], end=' ')
+            if a % self.SIZE == self.SIZE - 1:  # * 3줄씩 출력
+                print()
 
     def set(self, row, col):  # 송이김밥 수민
-        self.board[self.SIZE * (row - 1) + (col - 1)] = self.turn
+        index = self.SIZE * (row - 1) + (col - 1)
+        self.board[index] = self.turn
 
     def position_to_index(self, row, col):
         return self.SIZE * (row - 1) + (col - 1)
